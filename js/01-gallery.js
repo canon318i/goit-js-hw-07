@@ -12,11 +12,7 @@ function onGalleryClick(event) {
   if (!event.target.classList.contains('gallery__image')) {
     return;
   }
-  showBigImage(getBigImageUrl(event));
-}
-
-function getBigImageUrl(event) {
-  return event.target.dataset.source;
+  showBigImage(event.target.dataset.source);
 }
 
 function showBigImage(bigImageUrl) {
