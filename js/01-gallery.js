@@ -21,13 +21,11 @@ function showBigImage(bigImageUrl) {
     `);
   instance.show();
 
-  window.addEventListener(
-    'keydown',
-    event => {
-      instance.close();
-    },
-    { once: true },
-  );
+  function onEscape(event) {
+    instance.close();
+  }
+
+  window.addEventListener('keydown', onEscape, { once: true });
 }
 
 function createGalleryPalette(galleryItems) {
