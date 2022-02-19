@@ -16,16 +16,21 @@ function onGalleryClick(event) {
 }
 
 function showBigImage(bigImageUrl) {
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
     <img src="${bigImageUrl}" width="800" height="600">
-    `);
+    `,
+    {
+      onClose: () => window.removeEventListener('keydown', onEscape),
+    },
+  );
   instance.show();
 
   function onEscape(event) {
     instance.close();
   }
 
-  window.addEventListener('keydown', onEscape, { once: true });
+  window.addEventListener('keydown', onEscape);
 }
 
 function createGalleryPalette(galleryItems) {
